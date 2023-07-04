@@ -18,13 +18,14 @@ III. Reduzir o consumo de energia.
 IV. Economizar na conta de luz.
 
 V. Contribuir para a preservação do meio ambiente.
+
 ### Segue Documentação de cada API oferecida
-- [Documentação API Endereços](https://github.com/WalaceLima/APICadastrodeEnderecoPOSFiap.git),
-- [Documentação API Pessoas](https://github.com/WalaceLima/APIGestaodePessoasPOSFIAP.git),
-- [Documentação API Eletrodomésticos](https://github.com/WalaceLima/APIGestaodeEletrodomesticosPOSFIAP.git).
+- [Documentação API Endereços](https://github.com/WalaceLima/APICadastrodeEnderecoPOSFiap/blob/main/README.md),
+- [Documentação API Pessoas](https://github.com/WalaceLima/APIGestaodePessoasPOSFIAP/blob/main/README.md),
+- [Documentação API Eletrodomésticos](https://github.com/WalaceLima/APIGestaodeEletrodomesticosPOSFIAP/blob/main/README.md).
       
-- Oferecemos três APIs, focando na integridade dos dados, são elas:
-    - [API de Cadastro de Endereços](https://github.com/WalaceLima/APICadastrodeEnderecoPOSFiap.git),
-    - [API de Gestão de Pessoas](https://github.com/WalaceLima/APIGestaodePessoasPOSFIAP.git),
-    - [API de Gestão de Eletrodomésticos](https://github.com/WalaceLima/APIGestaodeEletrodomesticosPOSFIAP.git).
+### Oferecemos três APIs, focando na integridade dos dados:
+- [API de Cadastro de Endereços](https://github.com/WalaceLima/APICadastrodeEnderecoPOSFiap.git),
+- [API de Gestão de Pessoas](https://github.com/WalaceLima/APIGestaodePessoasPOSFIAP.git),
+- [API de Gestão de Eletrodomésticos](https://github.com/WalaceLima/APIGestaodeEletrodomesticosPOSFIAP.git).
 
