@@ -27,6 +27,7 @@ V. Contribuir para a preservação do meio ambiente.
 ### Tecnologias Utilizadas
 - Framework SpringBoot(Criação simples de API robusta); 
 - Java 17;
+- Maven;
 - Lombok(anotação para código menos verboso);
 - ModelMapper (Desafio na utilização para mapear e copular os dtos);
 - Postman (Para testar).
