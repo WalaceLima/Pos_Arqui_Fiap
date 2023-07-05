@@ -28,7 +28,7 @@ V. Contribuir para a preservação do meio ambiente.
   
 ### Segue Documentação de cada API oferecida
 - [Documentação API Endereços](https://github.com/WalaceLima/APICadastrodeEnderecoPOSFiap/blob/main/README.md),
-- [Documentação API Pessoas](https://github.com/WalaceLima/APIGestaodePessoasPOSFIAP/blob/main/README.md),
+- [Documentação API Pessoas](https://github.com/Eliscarla/fiap/edit/main/README.md),
 - [Documentação API Eletrodomésticos](https://github.com/WalaceLima/APIGestaodeEletrodomesticosPOSFIAP/blob/main/README.md).
       
 ### Oferecemos três APIs, focando na integridade dos dados:
