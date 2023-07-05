@@ -19,6 +19,13 @@ IV. Economizar na conta de luz.
 
 V. Contribuir para a preservação do meio ambiente.
 
+### Tecnologias Utilizadas
+- Framework SpringBoot(Criação simples de API robusta); 
+- Java 17;
+- Lombok(anotação para código menos verboso);
+- ModelMapper (Desafio na utilização para mapear e copular os dtos);
+- Postman (Para testar).
+  
 ### Segue Documentação de cada API oferecida
 - [Documentação API Endereços](https://github.com/WalaceLima/APICadastrodeEnderecoPOSFiap/blob/main/README.md),
 - [Documentação API Pessoas](https://github.com/WalaceLima/APIGestaodePessoasPOSFIAP/blob/main/README.md),
