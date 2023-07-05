@@ -1,5 +1,10 @@
 # **Empresa ArchTech**
 
+## Integrantes
+- Alexandre Alves dos Santos, matrícula: RM 349059,
+- Elisangela Carla dos Santos, matrícula:RM 350352,
+- Walace Luiz de Souza Lima, RM 350292.
+
 ## O Problema
 Desenvolvimento de um sistema WEB, com interfaces e APIs, para cadastro de Pessoas, Casas e Eletrodomésticos. Este sistema tem por finalidade calcular o consumo mensal de energia.
 
@@ -31,8 +36,5 @@ V. Contribuir para a preservação do meio ambiente.
 - [Documentação API Pessoas](https://github.com/Eliscarla/fiap/edit/main/README.md),
 - [Documentação API Eletrodomésticos](https://github.com/WalaceLima/APIGestaodeEletrodomesticosPOSFIAP/blob/main/README.md).
       
-### Oferecemos três APIs, focando na integridade dos dados:
-- [API de Cadastro de Endereços](https://github.com/WalaceLima/APICadastrodeEnderecoPOSFiap.git),
-- [API de Gestão de Pessoas](https://github.com/WalaceLima/APIGestaodePessoasPOSFIAP.git),
-- [API de Gestão de Eletrodomésticos](https://github.com/WalaceLima/APIGestaodeEletrodomesticosPOSFIAP.git).
+
 
