@@ -2,7 +2,7 @@
 
 ## Integrantes
 - Alexandre Alves dos Santos, matrícula: RM 349059,
-- Elisangela Carla dos Santos, matrícula:RM 350352,
+- Elisangela Carla de Souza, matrícula:RM 350352,
 - Walace Luiz de Souza Lima, RM 350292.
 
 ## O Problema
