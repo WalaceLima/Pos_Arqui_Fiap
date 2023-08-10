@@ -1,23 +1,19 @@
-package br.com.archtech.apis.models;
+package br.com.archtech.apis.dtos;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import br.com.archtech.apis.models.Eletrodomestico;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToMany;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.time.LocalDate;
 import java.util.List;
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
-@Entity
-public class Pessoa {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Getter
+@Setter
+public class PessoaGetDto {
     private Long id_pessoa;
     private String nome;
     private String cpf;
-//    private LocalDate dataNascimento;
+    //    private LocalDate dataNascimento;
 //    private String sexo;
 //    private String grauParentesco;
     @OneToMany(mappedBy = "pessoa",cascade = CascadeType.ALL)

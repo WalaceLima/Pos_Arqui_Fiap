@@ -1,6 +1,6 @@
 package br.com.archtech.apis.controllers;
 
-import br.com.archtech.apis.dtos.PessoaDto;
+import br.com.archtech.apis.dtos.PessoaGetDto;
 import br.com.archtech.apis.models.interfaces.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +16,7 @@ public class PessoaController {
 	private PessoaRepository repository;
 
 	@PostMapping
-	public void criar(@RequestBody PessoaDto dto) {
+	public void criar(@RequestBody PessoaGetDto dto) {
 
 		repository.toString();
 	}

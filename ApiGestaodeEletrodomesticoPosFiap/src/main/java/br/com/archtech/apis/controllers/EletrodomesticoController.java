@@ -1,10 +1,14 @@
 package br.com.archtech.apis.controllers;
 
-import br.com.archtech.apis.dtos.EletrodomesticoDto;
+import br.com.archtech.apis.dtos.EletrodomesticoDto.EletrodomesticoGetDto;
+import br.com.archtech.apis.dtos.EletrodomesticoDto.EletrodomesticoPostDto;
+import br.com.archtech.apis.dtos.EletrodomesticoDto.EletrodomesticoPutDto;
+import br.com.archtech.apis.dtos.PessoaGetDto;
 import br.com.archtech.apis.models.Eletrodomestico;
 import br.com.archtech.apis.models.interfaces.EletrodomesticoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -18,59 +22,60 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "/api/eletrodomesticos", produces = MediaType.APPLICATION_JSON_VALUE)
 public class EletrodomesticoController {
+    //pg 498
     @Autowired
-    EletrodomesticoRepository eletrodomesticoRepository;
-    //private final EletrodomesticoService eletrodomesticoService;
+    EletrodomesticoRepository  eletrodomesticoRepository;
+   // private final EletrodomesticoService eletrodomesticoService;
 
     @GetMapping
-    public ResponseEntity<List<EletrodomesticoDto>> listarEletrodomesticos() {
+    public ResponseEntity<List<EletrodomesticoGetDto>> get() {
         try {
-            List<EletrodomesticoDto> resultado = new ArrayList<EletrodomesticoDto>();
+            List<EletrodomesticoGetDto> resultado = new ArrayList<EletrodomesticoGetDto>();
+
             for (Eletrodomestico eletrodomestico : eletrodomesticoRepository.findAll()) {
-                EletrodomesticoDto eletrodomesticoDto = new EletrodomesticoDto();
+
+                EletrodomesticoGetDto eletrodomesticoDto = new EletrodomesticoGetDto();
+
                 eletrodomesticoDto.setId_eletrodomestico(eletrodomestico.getId_eletrodomestico());
-                eletrodomesticoDto.setNome(eletrodomestico.getNome());
                 eletrodomesticoDto.setMarca(eletrodomestico.getMarca());
+                eletrodomesticoDto.setNome(eletrodomestico.getNome());
                 eletrodomesticoDto.setTensao(eletrodomestico.getTensao());
 
-//                eletrodomesticoDto.setPessoa(new PessoaDto());
-//
+//                eletrodomesticoDto.setPessoa(new PessoaGetDto());
 //                eletrodomesticoDto.getPessoa().setId_pessoa(eletrodomestico.getPessoa().getId_pessoa());
 //                eletrodomesticoDto.getPessoa().setNome(eletrodomestico.getPessoa().getNome());
-//                eletrodomesticoDto.getPessoa().setSexo(eletrodomestico.getPessoa().getSexo());
-//                eletrodomesticoDto.getPessoa().setDataNascimento(eletrodomestico.getPessoa().getDataNascimento());
-//                eletrodomesticoDto.getPessoa().setGrauParentesco(eletrodomestico.getPessoa().getGrauParentesco());
+//                eletrodomesticoDto.getPessoa().setCpf(eletrodomestico.getPessoa().getCpf());
 
                 resultado.add(eletrodomesticoDto);
             }
             return ResponseEntity.status(HttpStatus.OK).body(resultado);
+
         } catch (Exception e) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-    }
-}
-    @GetMapping("/{id}")
-    public ResponseEntity<EletrodomesticoDto> buscarEletrodomesticos(@PathVariable("id_eletrodomestico")Long id_eletrodomestico){
-        try {
-            Optional<Eletrodomestico> resultado = eletrodomesticoRepository.findById(id_eletrodomestico);
-            if (resultado == null || resultado.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
-            } else {
-                Eletrodomestico eletrodomestico = resultado.get();
-                EletrodomesticoDto eletrodomesticoDto = new EletrodomesticoDto();
-                eletrodomesticoDto.setId_eletrodomestico(eletrodomestico.getId_eletrodomestico());
-                eletrodomesticoDto.setMarca(eletrodomestico.getMarca());
-                eletrodomesticoDto.setNome(eletrodomestico.getNome());
-                eletrodomesticoDto.setTensao(eletrodomestico.getTensao());
-                return ResponseEntity.status(HttpStatus.OK).body(eletrodomesticoDto);
-            }
-        }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
+}
+    @GetMapping("/{id}")// pg 511
+    public ResponseEntity<String> getById(@PathVariable("id")Long id){
 
+            try{
+                Optional<Eletrodomestico> resultado=eletrodomesticoRepository.findById(id);
+                if(resultado == null || resultado.isEmpty()){
+                    return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("Eletrodomestico não encontrado.");
+                }
+                Eletrodomestico eletrodomestico=resultado.get();
+                eletrodomesticoRepository.delete(eletrodomestico);
+                return ResponseEntity.status(HttpStatus.OK)
+                        .body("Eletrodoméstico excluído com sucesso.");
+            }catch (Exception e){
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                        .body("Erro" + e.getMessage());
+            }
     }
 @PostMapping
-public ResponseEntity<String> criarEletrodomestico(@RequestBody EletrodomesticoDto eletrodomesticoDto){
+public ResponseEntity<String> post(@RequestBody EletrodomesticoPostDto eletrodomesticoDto){
         try {
+            //validar se CPF já cadastrado
+            //if(eletrodomesticoRepository.findById(eletrodomesticoDto){}
             Eletrodomestico eletrodomestico= new Eletrodomestico();
             eletrodomestico.setNome(eletrodomesticoDto.getNome());
             eletrodomestico.setMarca(eletrodomesticoDto.getMarca());
@@ -82,24 +87,25 @@ public ResponseEntity<String> criarEletrodomestico(@RequestBody EletrodomesticoD
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro: " + e.getMessage());
         }
 }
-    //ToDo
-    @PutMapping("/{id}")
-    public ResponseEntity<String> atualizarEletrodomestico(@PathVariable("id")Long id,@RequestBody EletrodomesticoDto eletrodomesticoDto){
+
+    @PutMapping
+    public ResponseEntity<String> put(@RequestBody EletrodomesticoPutDto eletrodomesticoDto){
         try{
-            Optional<Eletrodomestico> buscarEletrodomesticos= eletrodomesticoRepository.findById(eletrodomesticoDto.getId_eletrodomestico());
-            if (buscarEletrodomesticos == null || buscarEletrodomesticos.isEmpty()){
-                    return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("Eletrodomestico não localizado");
+            Optional<Eletrodomestico> buscar= eletrodomesticoRepository.findById(eletrodomesticoDto.getId_eletrodomestico());
+            if (buscar == null || buscar.isEmpty()){
+                    return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
+                            .body("Eletrodoméstico não localizado");
             }
-            Eletrodomestico atualizarEletro= buscarEletrodomesticos.get();
-            atualizarEletro.setMarca(eletrodomesticoDto.getMarca());
+            Eletrodomestico atualizarEletro= buscar.get();
             atualizarEletro.setNome(eletrodomesticoDto.getNome());
+            atualizarEletro.setMarca(eletrodomesticoDto.getMarca());
             atualizarEletro.setTensao(eletrodomesticoDto.getTensao());
             eletrodomesticoRepository.save(atualizarEletro);
             return ResponseEntity.status(HttpStatus.OK)
-                    .body("Atualizado com sucesso!");
+                    .body("Eletrodoméstico atualizado com sucesso!");
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Erro" + e.getMessage());
+                    .body("Erro:" + e.getMessage());
         }
     }
        @PatchMapping ("/{id}")
@@ -122,7 +128,7 @@ public ResponseEntity<String> criarEletrodomestico(@RequestBody EletrodomesticoD
         }
     }
     @DeleteMapping ("/{id}")
-    public ResponseEntity<String> apagarEletrodomestico(@PathVariable("id")Long id) {
+    public ResponseEntity<String> apagar(@PathVariable("id")Long id) {
         try{
             Optional<Eletrodomestico> resultado=eletrodomesticoRepository.findById(id);
             if(resultado == null || resultado.isEmpty()){
