@@ -14,12 +14,12 @@ import java.util.List;
 public class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_pessoa;
+    private Long id;
     private String nome;
     private String cpf;
-//    private LocalDate dataNascimento;
-//    private String sexo;
-//    private String grauParentesco;
+    private LocalDate dataNascimento;
+    private String sexo;
+    private String grauParentesco;
     @OneToMany(mappedBy = "pessoa",cascade = CascadeType.ALL)
     private List<Eletrodomestico> eletrodomesticos;
 //    @OneToMany(mappedBy = "pessoa",cascade = CascadeType.ALL)
