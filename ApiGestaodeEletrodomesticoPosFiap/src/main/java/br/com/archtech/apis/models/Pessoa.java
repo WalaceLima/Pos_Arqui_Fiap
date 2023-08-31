@@ -20,8 +20,13 @@ public class Pessoa {
     private LocalDate dataNascimento;
     private String sexo;
     private String grauParentesco;
+
     @OneToMany(mappedBy = "pessoa",cascade = CascadeType.ALL)
     private List<Eletrodomestico> eletrodomesticos;
-//    @OneToMany(mappedBy = "pessoa",cascade = CascadeType.ALL)
-//    private List<Endereco> enderecos;
+    
+    @ManyToOne
+    @JoinColumn(name = "endereco_id")
+    private Endereco endereco;
+    
+
 }

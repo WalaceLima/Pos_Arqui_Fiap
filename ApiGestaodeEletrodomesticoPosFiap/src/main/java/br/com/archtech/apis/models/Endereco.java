@@ -1,6 +1,9 @@
 package br.com.archtech.apis.models;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 
 import lombok.AllArgsConstructor;
@@ -21,8 +24,8 @@ public class Endereco {
 	private String bairro;
 	private String cidade;
 	private String estado;
-	@ManyToOne
-	@JoinColumn(name="pessoa_id")
-	private Pessoa pessoa;
+	
+	@OneToMany(mappedBy = "endereco")
+	private List<Pessoa> pessoas = new ArrayList<>();
 
 }
