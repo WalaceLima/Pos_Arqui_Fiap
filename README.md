@@ -30,7 +30,10 @@ V. Contribuir para a preservação do meio ambiente.
 - Maven;
 - Lombok(anotação para código menos verboso);
 - ModelMapper (Desafio na utilização para mapear e copular os dtos);
-- Postman (Para testar).
+- Postman (Para testar);
+- Docker;
+- Imagem Postgres (postgres:15.3-alpine3.18);
+- Swagger.
   
 ### Segue Documentação de cada API oferecida
 - [Documentação API Endereços](https://github.com/WalaceLima/APICadastrodeEnderecoPOSFiap/blob/main/README.md),
